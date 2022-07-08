@@ -38,4 +38,4 @@ sudo systemctl enable sshd.service
 mkdir ~/.config
 mkdir ~/.config/nvim
 touch ~/.config/nvim/init.vim
-mv ~/git-keyring/init.vim .config/nvim
+cp -f ~/git-keyring/init.vim .config/nvim/
