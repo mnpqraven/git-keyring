@@ -23,7 +23,7 @@ done
 #ssh-keygen -t ed25519 -C "$email"
 ssh-keygen
 eval "$(ssh-agent -s)"
-ssh-add -L
+ssh-add ~/.ssh/id_rsa
 git config --global url.ssh://git@github.com/.insteadOf https://github.com/
 echo "open up new term and xclip the keys, theres a sha key and a ed key"
 sudo systemctl enable sshd.service
@@ -32,5 +32,5 @@ sudo systemctl enable sshd.service
 mkdir .config
 mkdir .config/nvim
 touch .config/nvim/init.vim
-mv init.vim .config/nvim
+mv ~/init.vim .config/nvim
 echo 'tell who you are with git config --global user.name and user.email'
