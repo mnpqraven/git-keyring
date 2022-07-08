@@ -1,2 +1,4 @@
 # git-keyring
-make git remember password on a fresh install
+```
+curl -o git-install.sh https://raw.githubusercontent.com/mnpqraven/git-keyring/main/git-install.sh && bash new_install.sh
+```
