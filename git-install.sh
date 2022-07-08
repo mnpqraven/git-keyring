@@ -3,7 +3,7 @@
 sudo pacman -Syu
 sudo pacman -S neovim gnome-keyring libsecret
 
-cd $HOME
+cd $HOME/git-keyring
 # cp git-keyring/.gitconfig ./
 echo "do NOT sudo this, if you did it by accident, cancel"
 echo "enter your email:"
@@ -29,8 +29,8 @@ echo "open up new term and xclip the keys, theres a sha key and a ed key"
 sudo systemctl enable sshd.service
 
 # test neovim install
-mkdir .config
-mkdir .config/nvim
-touch .config/nvim/init.vim
-mv ~/init.vim .config/nvim
+mkdir ~/.config
+mkdir ~/.config/nvim
+touch ~/.config/nvim/init.vim
+mv ~/git-keyring/init.vim .config/nvim
 echo 'tell who you are with git config --global user.name and user.email'
