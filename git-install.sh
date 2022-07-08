@@ -32,7 +32,5 @@ sudo systemctl enable sshd.service
 mkdir .config
 mkdir .config/nvim
 touch .config/nvim/init.vim
-echo 'plug#begin()' > .config/nvim/init.vim
-echo 'Plug \'tpope/vim-fugitive\'' > .config/nvim/init.vim
-echo 'plug#end()' > .config/nvim/init.vim
+mv init.vim .config/nvim
 echo 'tell who you are with git config --global user.name and user.email'
