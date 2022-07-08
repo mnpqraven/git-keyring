@@ -26,16 +26,10 @@ esac
 done
 
 # cp $HOME/dotfiles/.gitconfig $HOME
-ssh-keygen -t ed25519 -C "$email"
 eval "$(ssh-agent -s)"
+ssh-keygen -t ed25519 -C "$email"
 ssh-add ~/.ssh/id_ed25519
 git config --global url.ssh://git@github.com/.insteadOf https://github.com/
 git config --global user.name and user.email "$email"
-echo "open up new term and xclip the keys, theres a sha key and a ed key"
+xclip $HOME/.ssh/id_ed25519.pub
 sudo systemctl enable sshd.service
-
-# test neovim install
-mkdir ~/.config
-mkdir ~/.config/nvim
-touch ~/.config/nvim/init.vim
-cp -f ~/git-keyring/init.vim .config/nvim/
