@@ -1,3 +1,3 @@
-plug#begin()
+call plug#begin()
 Plug 'tpope/vim-fugitive'
-plug#end()
+call plug#end()
