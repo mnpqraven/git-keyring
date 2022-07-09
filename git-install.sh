@@ -4,6 +4,8 @@ sudo pacman -Syu
 sudo pacman -S neovim gnome-keyring libsecret
 
 cd $HOME
+# runtime
+eval `ssh-agent -s`
 
 git clone https://github.com/mnpqraven/git-keyring.git
 # cp git-keyring/.gitconfig ./
@@ -36,16 +38,13 @@ done
 git config --global url.ssh://git@github.com/.insteadOf https://github.com/
 git config --global user.email "$email"
 git config --global user.name "$name"
-echo AddKeysToAgent yes > $HOME/.ssh/config
+echo AddKeysToAgent yes > .ssh/config
 
 ssh-keygen -t ed25519 -C "$email"
-eval `ssh-agent -s`
 ssh-add ~/.ssh/id_ed25519
 
-# runtime
-eval `/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg`
-sudo systemctl enable sshd.service
-eval `ssh-agent -s`
+# eval `/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg`
+# sudo systemctl enable sshd.service
 #not running
 ssh-add -L
 
