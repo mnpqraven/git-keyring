@@ -34,22 +34,25 @@ done
 
 # CONFIG
 git config --global url.ssh://git@github.com/.insteadOf https://github.com/
-git config --global user.name and user.email "$email"
-git config --global user.name and user.name "$name"
+git config --global user.email "$email"
+git config --global user.name "$name"
 echo AddKeysToAgent yes > $HOME/.ssh/config
 
 ssh-keygen -t ed25519 -C "$email"
-eval "$(ssh-agent -s)"
+eval `ssh-agent -s`
 ssh-add ~/.ssh/id_ed25519
 
 # runtime
 eval `/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg`
 sudo systemctl enable sshd.service
-#debug
+eval `ssh-agent -s`
+#not running
 ssh-add -L
 
 xclip $HOME/.ssh/id_ed25519.pub
 read -p "press enter after you have pasted the key in your github browser (ED255)" confirm
+# ping to get knownhosts
+ssh -T git@github.com
 
 # CONFIG
 # cp $HOME/git-keyring/.profile $HOME/
@@ -59,6 +62,5 @@ read -p "press enter after you have pasted the key in your github browser (ED255
 cd $HOME
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-mkdir .config
 mkdir .config/nvim
 cat git-keyring/init.vim > .config/nvim/init.vim
